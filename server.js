@@ -15,9 +15,10 @@ app.use('/uploads', express.static('uploads'));
 
 // Add CSP header
 app.use((req, res, next) => {
-  res.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self' https://vercel.live/_next-live/feedback/feedback.js");
-  next();
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' https://vercel.live/_next-live/feedback/feedback.js; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://vercel.live");
+    next();
 });
+  
 
 app.use('/user', userController);
 app.use('/product', productController);
